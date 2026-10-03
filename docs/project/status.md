@@ -19,3 +19,7 @@
 - Prepare Google Search Console and Bing Webmaster Tools verification, domain cutover, rollback and monitoring.
 
 See the master plan for full gates. A successful typecheck/build or a preview is not completion of the launch gates. Status must distinguish code inspection, browser checks and real-device checks.
+
+## Homepage redesign after owner feedback
+
+The rejected first concept has been replaced with a full-width studio scene, physically based material/lighting treatment, continuous scroll chapters and direct damped pointer response. Slider removed. References: USAvionix, Nudot, Tenbin and Exito. Detailed owner-facing copy added. See `docs/design/homepage-redesign.md` and `docs/qa/homepage-redesign.md`; keep earlier milestone evidence as historical records.
