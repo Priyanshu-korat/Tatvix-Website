@@ -1,6 +1,10 @@
 # Tatvix Technologies — website master plan
 
-Prepared: 3 October 2026. Revision 3: implementation playbook and software delivery management process. Status: planning only; website implementation has not started. The implementation tasks and website audits below remain pending.
+Prepared: 3 October 2026. Updated: 10 October 2026. Revision 4: implementation and launch-readiness status. The website is implemented and deployed to an owner-private Sites preview. The current delivery includes distinct, scroll-synchronised Three.js scenes, 29 crawlable HTML pages, service/industry content, case studies and a dedicated enquiry form. The original planning sections below remain the delivery framework; they do not imply that every launch gate has passed.
+
+Current evidence: [launch readiness and confirmed enquiry receipt](../qa/launch-readiness-2026-10-10.md), [SEO audit](../qa/seo-audit.json), and [public launch/search verification runbook](../seo/launch-and-search-verification.md). Public-domain connection, public access, live production crawl checks and public performance checks remain pending. The existing www website remains live.
+
+Creative direction update: subsequent user feedback supersedes the initial light single-device concept in sections 3–4. The implemented homepage uses a continuous dark environment with different relevant 3D compositions for hardware, firmware, connectivity, applications and process. Mouse interaction replaces rotation sliders. Readable HTML content, normal scrolling, pause controls, reduced-motion handling and mobile layouts remain requirements throughout.
 
 ## How to use this plan
 
