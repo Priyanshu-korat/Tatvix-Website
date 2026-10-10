@@ -9,3 +9,10 @@
 html{scroll-padding-top:0}.intro .scene-caption{display:none}.scene-caption{bottom:75px}.site-header{background:linear-gradient(#080d13f5 55%,#080d1300)}
 @media(min-width:761px){.hardware .chapter-heading h2,.firmware .chapter-heading h2,.applications .chapter-heading h2{font-size:clamp(46px,5vw,76px)}.hardware .chapter-copy,.applications .chapter-copy{margin-top:35px}.firmware .chapter-copy{margin-top:50px}.network .chapter-heading{margin:0 auto}.network-foot{margin-top:340px}}
 @media(min-width:761px){.process{min-height:auto}.process-grid{margin-top:210px}.network{min-height:auto}.network-foot{margin-top:360px}}
+/* Feedback revision: legibility is independent of the animated objects. */
+.intro-heading{isolation:isolate}.intro-heading h1{color:#fff;text-shadow:0 3px 24px #02080ee6}.intro-heading::before{content:'';position:absolute;inset:-25px -6% -28px;z-index:-1;background:linear-gradient(#080d1300,#080d13d9 28%,#080d13ed 76%,#080d1300);pointer-events:none}.contact{background:radial-gradient(ellipse at 50% 100%,#183641 0%,#0a151e 48%,#080d13 82%);color:#fff}.contact h2{color:#fff}.contact .kicker{color:#b9e5eb}.contact>p:last-child{color:#d1dee6}.contact-email{color:#b9f0f3;border-color:#85d6df}.contact-email:hover{color:white}.network .chapter-heading>p:last-child{color:#d4e1e8}.scene-caption{color:#c1cfd8}.world-status[hidden]{display:none}
+@media(min-width:761px){.network-foot{margin-top:390px}.process-grid{margin-top:230px}}
+
+/* Motion controls belong to navigation, away from chapter copy. */
+.motion-control{position:static;flex-shrink:0;min-height:40px;margin:0;padding:8px 12px}.world-status{display:none}
+@media(max-width:760px){.site-header{gap:12px}.site-header .header-contact{display:none}.motion-control{margin-left:auto;width:40px;justify-content:center;padding:8px}.motion-control span{display:none}.menu-toggle{margin:0}}
