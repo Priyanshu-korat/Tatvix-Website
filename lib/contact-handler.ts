@@ -5,11 +5,11 @@ const endpoint='https://tatvix.netlify.app/api/contact';
 const limits={name:120,email:200,mobile:40,company:160,title:120,inquiryType:80,description:5000} as const;
 const inquiryTypes=['General','PCB Design','Firmware Development','IoT System Integration','Cloud Solutions','Web & Mobile Applications','Prototyping','Production Support'];
 function json(data:unknown,status=200){return Response.json(data,{status,headers:{'Cache-Control':'no-store'}});}
-export function createContactHandler(deliver:typeof fetch=fetch){
+export function createContactHandler(deliver:typeof fetch=fetch,mode:'bridge'|'direct'='bridge'){
  const hits=new Map<string,{count:number;until:number}>();
  return async function POST(request:Request){
   // Retain the guard if this application ever runs on the delivery origin itself.
-  if(new URL(request.url).origin===new URL(endpoint).origin)return json({success:false,message:'The enquiry service is being configured. Please email info@tatvixtech.com.'},503);
+  if(mode==='bridge'&&new URL(request.url).origin===new URL(endpoint).origin)return json({success:false,message:'The enquiry service is being configured. Please email info@tatvixtech.com.'},503);
   const origin=request.headers.get('origin');
   if(origin&&origin!==new URL(request.url).origin)return json({success:false,message:'Please send the form from this website.'},403);
   if(!request.headers.get('content-type')?.includes('application/json'))return json({success:false,message:'Invalid request format.'},415);
@@ -32,7 +32,7 @@ export function createContactHandler(deliver:typeof fetch=fetch){
   if(Object.keys(errors).length)return json({success:false,message:'Please check the highlighted fields.',errors},400);
   try{
    // Workers requires manual mode; reject redirects rather than following them.
-   const response=await deliver(endpoint,{method:'POST',redirect:'manual',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({...fields,botField:''}),signal:AbortSignal.timeout(12000)});
+   const response=await deliver(endpoint,{method:'POST',redirect:'manual',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({...fields,botField:'',consent:true}),signal:AbortSignal.timeout(12000)});
    if(response.status>=300&&response.status<400)return json({success:false,message:'Delivery could not be confirmed. Please email info@tatvixtech.com before trying again.'},502);
    const result=await response.json() as {success?:boolean};
    if(!response.ok||result.success!==true)return json({success:false,message:response.status===429?'Too many requests. Please try again shortly.':'Delivery could not be confirmed. Please email info@tatvixtech.com before trying again.'},response.status===429?429:502);

@@ -1,0 +1,45 @@
+[build]
+  command = "npm run build:netlify"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "24"
+  NETLIFY_NEXT_SKEW_PROTECTION = "true"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Next.js is handled by Netlify's automatically maintained OpenNext adapter.
+# Do not add an SPA catch-all: pages and route handlers require server rendering.
+
+[[redirects]]
+  from = "https://tatvixtech.com/*"
+  to = "https://www.tatvixtech.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/insights"
+  to = "/case-studies"
+  status = 301
+
+[[redirects]]
+  from = "/insights/traditional-tea-machine-smart-engineering"
+  to = "/case-studies/traditional-tea-machine-smart-engineering"
+  status = 301
+
+[[redirects]]
+  from = "/insights/localizing-advanced-ro-system-dependency-to-innovation"
+  to = "/case-studies/localizing-advanced-ro-system-dependency-to-innovation"
+  status = 301
+
+[[redirects]]
+  from = "/insights/scalable-iot-module-replace-external-dependencies"
+  to = "/case-studies/scalable-iot-module-replace-external-dependencies"
+  status = 301
+
+[[redirects]]
+  from = "/insights/battery-efficient-industrial-pressure-monitoring"
+  to = "/case-studies/battery-efficient-industrial-pressure-monitoring"
+  status = 301
