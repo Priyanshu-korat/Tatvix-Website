@@ -1,0 +1,254 @@
+{
+  "checkedAt": "2026-10-10T11:05:38.764Z",
+  "environment": "Public production host; unauthenticated HTTP audit.",
+  "pages": 29,
+  "internalTargets": 30,
+  "checks": [
+    "unique metadata",
+    "canonical URLs",
+    "one H1",
+    "initial HTML text",
+    "JSON-LD parses",
+    "social metadata",
+    "production index meta + no blocking header",
+    "internal links",
+    "XML sitemap",
+    "known legacy 301s",
+    "unknown route 404s",
+    "crawler rules"
+  ],
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "Tatvix Technologies | Embedded Systems &amp; IoT Development",
+      "description": "Tatvix Technologies, also known as Tatvix, is a product engineering company in Ahmedabad, India, working across embedded hardware, firmware, IoT and applications.",
+      "canonical": "https://www.tatvixtech.com",
+      "initialTextCharacters": 5540
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "title": "About Tatvix Technologies",
+      "description": "Tatvix, also known as Tatvix Technologies, is a product engineering company in Ahmedabad, India, connecting hardware, firmware, IoT and applications.",
+      "canonical": "https://www.tatvixtech.com/about",
+      "initialTextCharacters": 982
+    },
+    {
+      "path": "/services",
+      "status": 200,
+      "title": "Embedded Systems &amp; Product Engineering Services | Tatvix Technologies",
+      "description": "Explore Tatvix’s hardware design, embedded firmware, IoT connectivity, testing and application development services.",
+      "canonical": "https://www.tatvixtech.com/services",
+      "initialTextCharacters": 1645
+    },
+    {
+      "path": "/industries",
+      "status": 200,
+      "title": "IoT &amp; Embedded Engineering by Industry | Tatvix Technologies",
+      "description": "Explore engineering considerations for industrial IoT, agriculture, medical devices, security, consumer electronics, automotive and energy systems.",
+      "canonical": "https://www.tatvixtech.com/industries",
+      "initialTextCharacters": 1633
+    },
+    {
+      "path": "/process",
+      "status": 200,
+      "title": "Product Engineering Process | Tatvix Technologies",
+      "description": "How Tatvix defines requirements, designs systems, integrates hardware and software, and verifies agreed engineering deliverables.",
+      "canonical": "https://www.tatvixtech.com/process",
+      "initialTextCharacters": 1343
+    },
+    {
+      "path": "/case-studies",
+      "status": 200,
+      "title": "Embedded Systems &amp; IoT Case Studies | Tatvix Technologies",
+      "description": "Read Tatvix’s published engineering work on industrial pressure monitoring, IoT modules, RO systems and smart machine development.",
+      "canonical": "https://www.tatvixtech.com/case-studies",
+      "initialTextCharacters": 1235
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "title": "Discuss your project | Tatvix Technologies",
+      "description": "Connect with Tatvix Technologies to discuss hardware, firmware, IoT and application engineering requirements.",
+      "canonical": "https://www.tatvixtech.com/contact",
+      "initialTextCharacters": 839
+    },
+    {
+      "path": "/careers",
+      "status": 200,
+      "title": "Careers at Tatvix",
+      "description": "Follow Tatvix Technologies for future engineering opportunities in embedded systems, IoT and product development.",
+      "canonical": "https://www.tatvixtech.com/careers",
+      "initialTextCharacters": 299
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "title": "Privacy Policy | Tatvix Technologies",
+      "description": "How Tatvix Technologies handles personal information shared through its website and services.",
+      "canonical": "https://www.tatvixtech.com/privacy",
+      "initialTextCharacters": 5686
+    },
+    {
+      "path": "/terms",
+      "status": 200,
+      "title": "Terms of Service | Tatvix Technologies",
+      "description": "Terms governing the Tatvix Technologies website and separately agreed engineering project scopes.",
+      "canonical": "https://www.tatvixtech.com/terms",
+      "initialTextCharacters": 5832
+    },
+    {
+      "path": "/services/embedded-hardware-design",
+      "status": 200,
+      "title": "Embedded hardware &amp; PCB design | Tatvix Technologies",
+      "description": "Circuit architecture, schematics and PCB layouts shaped around the product’s electrical, mechanical and manufacturing needs.",
+      "canonical": "https://www.tatvixtech.com/services/embedded-hardware-design",
+      "initialTextCharacters": 1802
+    },
+    {
+      "path": "/services/firmware-development",
+      "status": 200,
+      "title": "Embedded firmware development | Tatvix Technologies",
+      "description": "Device drivers, embedded C/C++, RTOS logic and communication that turn a circuit into a working product.",
+      "canonical": "https://www.tatvixtech.com/services/firmware-development",
+      "initialTextCharacters": 1777
+    },
+    {
+      "path": "/services/iot-cloud-connectivity",
+      "status": 200,
+      "title": "IoT &amp; cloud connectivity | Tatvix Technologies",
+      "description": "Connected device architectures across BLE, Wi-Fi, gateways, cloud services and customer applications.",
+      "canonical": "https://www.tatvixtech.com/services/iot-cloud-connectivity",
+      "initialTextCharacters": 1763
+    },
+    {
+      "path": "/services/testing-and-validation",
+      "status": 200,
+      "title": "Embedded testing &amp; validation | Tatvix Technologies",
+      "description": "Requirements-led checks across hardware, firmware, interfaces and complete connected systems.",
+      "canonical": "https://www.tatvixtech.com/services/testing-and-validation",
+      "initialTextCharacters": 1663
+    },
+    {
+      "path": "/services/web-application-development",
+      "status": 200,
+      "title": "Web applications &amp; IoT dashboards | Tatvix Technologies",
+      "description": "Readable dashboards, operational tools and web interfaces connected to the systems behind them.",
+      "canonical": "https://www.tatvixtech.com/services/web-application-development",
+      "initialTextCharacters": 1541
+    },
+    {
+      "path": "/services/mobile-app-development",
+      "status": 200,
+      "title": "Connected mobile applications | Tatvix Technologies",
+      "description": "Mobile experiences for device setup, local communication, monitoring and control.",
+      "canonical": "https://www.tatvixtech.com/services/mobile-app-development",
+      "initialTextCharacters": 1545
+    },
+    {
+      "path": "/services/custom-software-development",
+      "status": 200,
+      "title": "Custom software &amp; system integration | Tatvix Technologies",
+      "description": "Software tools, APIs and integrations built around the way your product and business operate.",
+      "canonical": "https://www.tatvixtech.com/services/custom-software-development",
+      "initialTextCharacters": 1453
+    },
+    {
+      "path": "/services/new-product-development",
+      "status": 200,
+      "title": "New connected product development | Tatvix Technologies",
+      "description": "A coordinated path from product requirements to hardware, firmware, connectivity and the user experience.",
+      "canonical": "https://www.tatvixtech.com/services/new-product-development",
+      "initialTextCharacters": 1761
+    },
+    {
+      "path": "/industries/industrial-iot",
+      "status": 200,
+      "title": "Industrial IoT &amp; connected monitoring | Tatvix Technologies",
+      "description": "Embedded engineering for sensing, monitoring and connected equipment in industrial environments.",
+      "canonical": "https://www.tatvixtech.com/industries/industrial-iot",
+      "initialTextCharacters": 1377
+    },
+    {
+      "path": "/industries/agritech-solutions",
+      "status": 200,
+      "title": "Agriculture IoT &amp; agritech engineering | Tatvix Technologies",
+      "description": "Connected sensing and control concepts for agriculture, irrigation and remote monitoring.",
+      "canonical": "https://www.tatvixtech.com/industries/agritech-solutions",
+      "initialTextCharacters": 1165
+    },
+    {
+      "path": "/industries/medical-device-development",
+      "status": 200,
+      "title": "Medical device engineering | Tatvix Technologies",
+      "description": "Discuss hardware, firmware and connected applications for a defined medical device development scope.",
+      "canonical": "https://www.tatvixtech.com/industries/medical-device-development",
+      "initialTextCharacters": 1195
+    },
+    {
+      "path": "/industries/surveillance-devices",
+      "status": 200,
+      "title": "Surveillance &amp; security device engineering | Tatvix Technologies",
+      "description": "Embedded and connected system requirements for security monitoring, sensing and device interfaces.",
+      "canonical": "https://www.tatvixtech.com/industries/surveillance-devices",
+      "initialTextCharacters": 1112
+    },
+    {
+      "path": "/industries/consumer-electronics",
+      "status": 200,
+      "title": "Consumer electronics &amp; smart devices | Tatvix Technologies",
+      "description": "Hardware, firmware and companion experiences for everyday connected products.",
+      "canonical": "https://www.tatvixtech.com/industries/consumer-electronics",
+      "initialTextCharacters": 1309
+    },
+    {
+      "path": "/industries/energy-management-systems",
+      "status": 200,
+      "title": "Energy monitoring &amp; management systems | Tatvix Technologies",
+      "description": "Embedded measurement, telemetry and application requirements for energy-related systems.",
+      "canonical": "https://www.tatvixtech.com/industries/energy-management-systems",
+      "initialTextCharacters": 1127
+    },
+    {
+      "path": "/industries/automotive-embedded-systems",
+      "status": 200,
+      "title": "Automotive embedded engineering | Tatvix Technologies",
+      "description": "Discuss a defined embedded hardware, firmware or connectivity scope for an automotive-related application.",
+      "canonical": "https://www.tatvixtech.com/industries/automotive-embedded-systems",
+      "initialTextCharacters": 1132
+    },
+    {
+      "path": "/case-studies/battery-efficient-industrial-pressure-monitoring",
+      "status": 200,
+      "title": "Designing a Battery-Efficient Industrial Pressure Monitoring System | Tatvix Technologies",
+      "description": "Creating a compact, battery-operated pressure monitoring device that delivers industrial-grade accuracy while maintaining extended operational life through intelligent power management.",
+      "canonical": "https://www.tatvixtech.com/case-studies/battery-efficient-industrial-pressure-monitoring",
+      "initialTextCharacters": 3520
+    },
+    {
+      "path": "/case-studies/scalable-iot-module-replace-external-dependencies",
+      "status": 200,
+      "title": "Building a Scalable IoT Module to Replace External Dependencies | Tatvix Technologies",
+      "description": "Creating a universal IoT communication module to eliminate third-party dependencies while enabling reliable data flow and future product scalability.",
+      "canonical": "https://www.tatvixtech.com/case-studies/scalable-iot-module-replace-external-dependencies",
+      "initialTextCharacters": 3725
+    },
+    {
+      "path": "/case-studies/localizing-advanced-ro-system-dependency-to-innovation",
+      "status": 200,
+      "title": "Localizing an Advanced RO System: From Dependency to Scalable Innovation | Tatvix Technologies",
+      "description": "How we transformed a TDS monitoring system from external dependency to a fully controlled, locally developed solution with improved reliability and faster iteration cycles.",
+      "canonical": "https://www.tatvixtech.com/case-studies/localizing-advanced-ro-system-dependency-to-innovation",
+      "initialTextCharacters": 3684
+    },
+    {
+      "path": "/case-studies/traditional-tea-machine-smart-engineering",
+      "status": 200,
+      "title": "Recreating the Taste of Traditional Tea Through Smart Engineering | Tatvix Technologies",
+      "description": "Building a machine that replicates traditional tea-making processes with precision, preserving authenticity while enabling automation and scalability.",
+      "canonical": "https://www.tatvixtech.com/case-studies/traditional-tea-machine-smart-engineering",
+      "initialTextCharacters": 4255
+    }
+  ]
+}

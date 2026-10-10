@@ -13,6 +13,13 @@ Target: existing Netlify project `tatvix` (`790f1bc0-f4af-4135-9f54-8881db5641c5
 
 ## Validation and release record
 
+- Production deployment `6aca1b74507334178db4630f` reached ready and served https://www.tatvixtech.com on 10 October 2026, source `f616f3ec1c4dbc4a4ae4ea8dfa0247e335366c05`.
+- Public audit passed: 29 pages, 30 internal targets, unique metadata, initial HTML, canonicals, sitemap, crawler rules, legacy 301s and genuine missing-route 404s. Apex HTTPS and HTTP www redirect to HTTPS www with 301. TLS checks used normal certificate validation.
+- `/api/contact` on both www and the stable Netlify origin returns 405 for GET and 400 with field errors for an empty POST. These validation checks send no mail.
+- The single separately authorised public enquiry test, reference `TATVIX-NETLIFY-20261010-01`, returned success in the browser; the user confirmed receipt at info@tatvixtech.com. No further retry was sent.
+- Desktop and 390 × 844 mobile inspection confirmed the homepage 3D renderer, firmware scene, readable content, navigation and contact success state. No browser warnings/errors appeared in the inspected desktop session. This is not a measured PageSpeed/Core Web Vitals result.
+- The starter favicon has been replaced with a temporary plain T initial in SVG, 96px PNG, multi-size ICO and 180px Apple icon. It is not an official company logo. Google must recrawl before its search icon can change; display is not guaranteed. Guidance checked: https://developers.google.com/search/docs/appearance/favicon-in-search (10 October 2026).
+
 - Local native Next.js production build passed.
 - Hosted attempts `6aca1844ad3673323a9cad3a` and `6aca1add90d71fb6077c5e9b` compiled and bundled successfully, then failed because the existing project classified public business details as secrets. Neither replaced the live website. The second scan revealed additional aliases for the same public city and email values; the exception explicitly names these public keys rather than disabling scanning.
 - 17 automated checks passed, including SMTP address/content sanitisation and the direct-mode delivery path with a stub transport. These tests send no email.
