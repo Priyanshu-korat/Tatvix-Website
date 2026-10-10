@@ -6,7 +6,7 @@ Updated 10 October 2026. Chosen canonical origin: **https://www.tatvixtech.com**
 
 - 29 server-rendered pages with useful first-response HTML, one H1, unique titles/descriptions, canonical URLs and social metadata. Important content does not depend on 3D or animation.
 - Eight service pages, seven application/industry pages, four original published case studies and company/process/contact/legal pages. Service and industry URLs from the old sitemap are retained.
-- Visible short/full brand identity, Ahmedabad location and verified LinkedIn link; Organization and WebSite entity markup. Service, BreadcrumbList and Article markup describe the content actually present.
+- Visible short/full brand identity, Gandhinagar location and verified LinkedIn link; Organization and WebSite entity markup. Service, BreadcrumbList and Article markup describe the content actually present.
 - Canonical XML sitemap without fabricated freshness dates. Known `/insights` paths permanently redirect to the corresponding `/case-studies` paths. Unknown detail pages return 404.
 - Production indexing applies only to the exact www host. Other hosts carry noindex in metadata and the Worker response header; authentication remains the access boundary for the private preview. Robots permits crawlers to see content/assets while excluding API paths. Robots is not a security control.
 - Googlebot, Bingbot and OAI-SearchBot have search access in the prepared configuration. GPTBot and Google-Extended retain the permission already explicitly published on the existing site; search and training are separate choices. CCBot retains its existing block. No special AI files, hidden prompts, keyword lists or review/rating markup were added.

@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 
-export const site={name:'Tatvix Technologies',shortName:'Tatvix',origin:'https://www.tatvixtech.com',email:'info@tatvixtech.com',linkedIn:'https://www.linkedin.com/company/tatvix',description:'Tatvix Technologies, also known as Tatvix, is a product engineering company in Ahmedabad, India, working across embedded hardware, firmware, IoT and applications.'} as const;
+export const site={name:'Tatvix Technologies',shortName:'Tatvix',origin:'https://www.tatvixtech.com',email:'info@tatvixtech.com',linkedIn:'https://www.linkedin.com/company/tatvix',city:'Gandhinagar',region:'Gujarat',country:'IN',location:'Gandhinagar, Gujarat, India',description:'Tatvix Technologies, also known as Tatvix, is a product engineering company in Gandhinagar, Gujarat, India, working across embedded hardware, firmware, IoT and applications.'} as const;
 export function canonical(path='/'){return new URL(path,site.origin).href;}
 export function isProductionHost(host:string|null){return /^www\.tatvixtech\.com(?::443)?$/i.test(host||'');}
 export function indexingRobots(host:string|null):Metadata['robots']{return isProductionHost(host)?{index:true,follow:true,'max-image-preview':'large','max-snippet':-1,'max-video-preview':-1}:{index:false,follow:true};}
@@ -14,6 +14,6 @@ export function robotsText(host:string|null){
  const policies=['*','Googlebot','Bingbot','OAI-SearchBot','GPTBot','Google-Extended'].map(agent=>`User-agent: ${agent}\nAllow: /\nDisallow: /api/`).join('\n\n');
  return policies+'\n\nUser-agent: CCBot\nDisallow: /\n'+(isProductionHost(host)?`\nSitemap: ${canonical('/sitemap.xml')}\n`:'');
 }
-export const organization={'@type':'Organization','@id':canonical('/#organization'),name:site.name,alternateName:site.shortName,url:canonical('/'),email:site.email,logo:{'@type':'ImageObject',url:canonical('/images/tatvix-logo.png'),width:600,height:180},sameAs:[site.linkedIn],address:{'@type':'PostalAddress',addressLocality:'Ahmedabad',addressRegion:'Gujarat',addressCountry:'IN'},description:site.description};
+export const organization={'@type':'Organization','@id':canonical('/#organization'),name:site.name,alternateName:site.shortName,url:canonical('/'),email:site.email,logo:{'@type':'ImageObject',url:canonical('/images/tatvix-logo.png'),width:600,height:180},sameAs:[site.linkedIn],address:{'@type':'PostalAddress',addressLocality:site.city,addressRegion:site.region,addressCountry:site.country},description:site.description};
 export function breadcrumbData(items:{name:string;path:string}[]){return {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:items.map((item,i)=>({'@type':'ListItem',position:i+1,name:item.name,item:canonical(item.path)}))};}
 export function jsonLd(value:unknown){return JSON.stringify(value).replace(/</g,'\\u003c');}

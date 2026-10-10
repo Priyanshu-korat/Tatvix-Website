@@ -1,4 +1,4 @@
-import {pageMetadata} from '@/lib/seo';
+import {pageMetadata,site} from '@/lib/seo';
 import SiteFooter from '@/components/site-footer';
 export const metadata=pageMetadata('Privacy Policy','How Tatvix Technologies handles personal information shared through its website and services.','/privacy');
 export default function PrivacyPolicy(){return <><header className="document-header"><a href="/#overview" className="wordmark">Tatvix<span>Technologies</span></a><a className="text-link" href="/#contact">Let's talk</a></header><main id="main" className="legal-page"><a className="text-link" href="/">Back to home</a><h1>Privacy Policy</h1><div className="legal-content"><section>
@@ -110,7 +110,7 @@ export default function PrivacyPolicy(){return <><header className="document-hea
                     <div>
                         <p>
                             <strong>Tatvix Technologies</strong><br />
-                            Ahmedabad, Gujarat, India<br />
+                            {site.location}<br />
                             Email: <strong>info@tatvixtech.com</strong><br />
                             Phone: <strong>+91 87587 29042</strong>
                         </p>

@@ -4,7 +4,8 @@ These are relevant topic clusters, not measured search-volume claims or guarante
 
 | Customer intent | Primary destination | Useful topics |
 | --- | --- | --- |
-| Find Tatvix / Tatvix Technologies | `/`, `/about` | Company identity, Ahmedabad, hardware/firmware/IoT, contact, LinkedIn |
+| Find Tatvix / Tatvix Technologies | `/`, `/about` | Company identity, Gandhinagar, hardware/firmware/IoT, contact, LinkedIn |
+| IoT / embedded engineering in Gandhinagar, Ahmedabad or Gujarat | `/about`, `/services` | Actual Gandhinagar base, relevant engineering services, regional enquiries; no invented Ahmedabad branch |
 | Build a new product | `/services/new-product-development` | Requirements, architecture, prototype scope, integration, handover |
 | Find PCB / embedded hardware support | `/services/embedded-hardware-design` | Schematics, PCB layout, BOM, components, manufacturing outputs |
 | Develop embedded firmware | `/services/firmware-development` | Embedded C/C++, drivers, FreeRTOS, Zephyr, embedded Linux, interfaces |

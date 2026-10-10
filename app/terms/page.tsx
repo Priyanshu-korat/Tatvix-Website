@@ -1,4 +1,4 @@
-import {pageMetadata} from '@/lib/seo';
+import {pageMetadata,site} from '@/lib/seo';
 import SiteFooter from '@/components/site-footer';
 export const metadata=pageMetadata('Terms of Service','Terms governing the Tatvix Technologies website and separately agreed engineering project scopes.','/terms');
 export default function TermsOfService(){return <><header className="document-header"><a href="/#overview" className="wordmark">Tatvix<span>Technologies</span></a><a className="text-link" href="/#contact">Let's talk</a></header><main id="main" className="legal-page"><a className="text-link" href="/">Back to home</a><h1>Terms of Service</h1><div className="legal-content"><section>
@@ -90,7 +90,7 @@ export default function TermsOfService(){return <><header className="document-he
                     <div>
                         <p>
                             <strong>Tatvix Technologies</strong><br />
-                            Ahmedabad, Gujarat, India<br />
+                            {site.location}<br />
                             Email: <strong>info@tatvixtech.com</strong><br />
                             Phone: <strong>+91 87587 29042</strong>
                         </p>
