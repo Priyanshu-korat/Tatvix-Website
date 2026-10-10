@@ -3,7 +3,7 @@ import SiteFooter from '@/components/site-footer';
 export const metadata=pageMetadata('Privacy Policy','How Tatvix Technologies handles personal information shared through its website and services.','/privacy');
 export default function PrivacyPolicy(){return <><header className="document-header"><a href="/#overview" className="wordmark">Tatvix<span>Technologies</span></a><a className="text-link" href="/#contact">Let's talk</a></header><main id="main" className="legal-page"><a className="text-link" href="/">Back to home</a><h1>Privacy Policy</h1><div className="legal-content"><section>
                     <p>
-                        Tatvix (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy outlines our practices regarding the collection, use, processing, and disclosure of your information when you access or use our website, applications, and services (collectively, the &quot;Services&quot;). By accessing or using our Services, you consent to the data practices described in this policy.
+                        Tatvix (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy outlines our practices regarding the collection, use, processing, and disclosure of your information when you access or use our website, applications, and services (collectively, the &quot;Services&quot;). Optional website analytics requires your separate choice in our cookie preferences.
                     </p>
                     <p>
                         We operate in accordance with applicable data protection laws, including the Information Technology Act, 2000 (India) and diverse international standards where applicable.
@@ -52,11 +52,13 @@ export default function PrivacyPolicy(){return <><header className="document-hea
                     </ul>
                 </section>
 
-                <section>
+                <section id="website-analytics">
                     <h2>4. Cookies and Tracking Technologies</h2>
-                    <p>
-                        We use cookies and similar tracking technologies to track the activity on our Service and hold certain information. Cookies are files with small amount of data which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.
-                    </p>
+                    <p>Updated 10 October 2026. On www.tatvixtech.com, we use Google Analytics 4 only after you choose &quot;Accept analytics&quot;. Rejecting optional analytics does not prevent you from reading our website or sending an enquiry. We do not load the Google Analytics tag or send analytics requests before you accept.</p>
+                    <p>When enabled, analytics measures page visits, traffic sources, browser and device information, approximate location and successfully submitted enquiries. Google receives these measurement events and cookie identifiers. Our enquiry event contains only a generic form identifier; we do not send your name, email address, phone number, company, job title or project message to Google Analytics. Page addresses sent by our tracking code exclude query strings and fragments; referring addresses exclude query strings and fragments, and external referring addresses are limited to their website origin.</p>
+                    <p>Google Analytics may set first-party _ga and _ga_* cookies with a lifetime of up to 180 days. We keep your accept or reject preference in browser local storage for up to 180 days. Google signals and advertising personalization are disabled in our tag configuration.</p>
+                    <p>You can reopen &quot;Cookie settings&quot; in the footer at any time. Rejecting after acceptance stops our analytics, removes accessible Google Analytics cookies and reloads the page to unload the tag. This does not erase measurement already received by Google. You can also clear your browser cookies and site storage.</p>
+                    <p>Google may process measurement data outside your country. Read <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google&apos;s Privacy Policy</a> and <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">how Google uses data from partner websites</a>. Contact info@tatvixtech.com about privacy questions or requests.</p>
                 </section>
 
                 <section>

@@ -1,0 +1,31 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+
+test('analytics requires consent and production, sanitizes URLs, deduplicates pages, and stops after withdrawal', async () => {
+  const storage = new Map(), scripts = [], removedCookies = [];
+  global.window = {location: {hostname: 'localhost', origin: 'http://localhost:3000', reload() {this.reloaded = true;}}, localStorage: {getItem: key => storage.get(key) || null, setItem: (key, value) => storage.set(key, value)}};
+  global.document = {title: 'Tatvix', referrer: 'https://example.com/search?q=private@example.com', head: {appendChild: node => scripts.push(node)}, createElement: () => ({})};
+  Object.defineProperty(document, 'cookie', {configurable: true, get: () => '_ga=test; _ga_L3DWKK55NR=test; necessary=keep', set: value => removedCookies.push(value)});
+  const ga = await import('../lib/analytics.ts');
+  ga.startAnalytics('/'); ga.trackSuccessfulEnquiry(); assert.equal(scripts.length, 0);
+  window.location.hostname = 'www.tatvixtech.com'; window.location.origin = 'https://www.tatvixtech.com';
+  ga.startAnalytics('/'); assert.equal(scripts.length, 0, 'no tag before consent');
+  ga.saveConsent('rejected'); ga.startAnalytics('/'); assert.equal(scripts.length, 0, 'no tag after rejection');
+  ga.saveConsent('accepted'); ga.startAnalytics('/services?email=private@example.com#secret');
+  ga.startAnalytics('/services?email=private@example.com#secret');
+  assert.equal(scripts.length, 1); assert.match(scripts[0].src, /G-L3DWKK55NR$/);
+  const events = () => window.dataLayer.map(args => Array.from(args));
+  assert.deepEqual(events()[0], ['consent', 'default', {analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'}]);
+  assert.equal(events().filter(args => args[1] === 'page_view').length, 1);
+  assert.equal(events().find(args => args[1] === 'page_view')[2].page_location, 'https://www.tatvixtech.com/services');
+  assert.equal(events().find(args => args[1] === 'page_view')[2].page_referrer, 'https://example.com/');
+  assert.ok(!JSON.stringify(events()).includes('private@example.com'));
+  ga.trackSuccessfulEnquiry(); assert.deepEqual(events().at(-1), ['event','generate_lead',{form_id:'project_enquiry'}]);
+  ga.trackPage('/contact'); assert.equal(events().filter(args => args[1] === 'page_view').length, 2);
+  ga.saveConsent('rejected'); const count = events().length;
+  ga.trackSuccessfulEnquiry(); ga.trackPage('/about'); assert.equal(events().length, count);
+  assert.equal(window.location.reloaded, true); assert.ok(removedCookies.length > 0); assert.ok(removedCookies.every(value => !value.startsWith('necessary=')));
+  storage.set(ga.consentKey, '{invalid'); assert.equal(ga.readConsent(), null);
+  storage.set(ga.consentKey, JSON.stringify({choice:'accepted',expires:Date.now()-1})); assert.equal(ga.readConsent(), null);
+  delete global.window; delete global.document;
+});
