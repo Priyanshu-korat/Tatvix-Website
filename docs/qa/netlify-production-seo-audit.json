@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-10T11:53:58.112Z",
+  "checkedAt": "2026-10-10T15:20:37.172Z",
   "environment": "Public production host; unauthenticated HTTP audit.",
   "pages": 29,
   "internalTargets": 33,
@@ -22,25 +22,25 @@
       "path": "/",
       "status": 200,
       "title": "Tatvix Technologies | Embedded Systems &amp; IoT Development",
-      "description": "Tatvix Technologies, also known as Tatvix, is a product engineering company in Ahmedabad, India, working across embedded hardware, firmware, IoT and applications.",
+      "description": "Tatvix Technologies, also known as Tatvix, is a product engineering company in Gandhinagar, Gujarat, India, working across embedded hardware, firmware, IoT and applications.",
       "canonical": "https://www.tatvixtech.com",
-      "initialTextCharacters": 5540
+      "initialTextCharacters": 5554
     },
     {
       "path": "/about",
       "status": 200,
       "title": "About Tatvix Technologies",
-      "description": "Tatvix, also known as Tatvix Technologies, is a product engineering company in Ahmedabad, India, connecting hardware, firmware, IoT and applications.",
+      "description": "Tatvix, also known as Tatvix Technologies, is a product engineering company in Gandhinagar, Gujarat, India, connecting hardware, firmware, IoT and applications.",
       "canonical": "https://www.tatvixtech.com/about",
-      "initialTextCharacters": 982
+      "initialTextCharacters": 2085
     },
     {
       "path": "/services",
       "status": 200,
       "title": "Embedded Systems &amp; Product Engineering Services | Tatvix Technologies",
-      "description": "Explore Tatvix’s hardware design, embedded firmware, IoT connectivity, testing and application development services.",
+      "description": "Tatvix in Gandhinagar, Gujarat: PCB and embedded hardware design, firmware, IoT connectivity, testing and new product development.",
       "canonical": "https://www.tatvixtech.com/services",
-      "initialTextCharacters": 1645
+      "initialTextCharacters": 1676
     },
     {
       "path": "/industries",
@@ -70,9 +70,9 @@
       "path": "/contact",
       "status": 200,
       "title": "Discuss your project | Tatvix Technologies",
-      "description": "Connect with Tatvix Technologies to discuss hardware, firmware, IoT and application engineering requirements.",
+      "description": "Contact Tatvix Technologies in Gandhinagar, Gujarat, for hardware, embedded firmware, IoT and new product engineering requirements.",
       "canonical": "https://www.tatvixtech.com/contact",
-      "initialTextCharacters": 839
+      "initialTextCharacters": 876
     },
     {
       "path": "/careers",
@@ -88,7 +88,7 @@
       "title": "Privacy Policy | Tatvix Technologies",
       "description": "How Tatvix Technologies handles personal information shared through its website and services.",
       "canonical": "https://www.tatvixtech.com/privacy",
-      "initialTextCharacters": 6971
+      "initialTextCharacters": 6973
     },
     {
       "path": "/terms",
@@ -96,7 +96,7 @@
       "title": "Terms of Service | Tatvix Technologies",
       "description": "Terms governing the Tatvix Technologies website and separately agreed engineering project scopes.",
       "canonical": "https://www.tatvixtech.com/terms",
-      "initialTextCharacters": 5832
+      "initialTextCharacters": 5834
     },
     {
       "path": "/services/embedded-hardware-design",
@@ -176,7 +176,7 @@
       "title": "Agriculture IoT &amp; agritech engineering | Tatvix Technologies",
       "description": "Connected sensing and control concepts for agriculture, irrigation and remote monitoring.",
       "canonical": "https://www.tatvixtech.com/industries/agritech-solutions",
-      "initialTextCharacters": 1165
+      "initialTextCharacters": 1580
     },
     {
       "path": "/industries/medical-device-development",
