@@ -5,6 +5,10 @@
 [build.environment]
   NODE_VERSION = "24"
   NETLIFY_NEXT_SKEW_PROTECTION = "true"
+  # Existing project variables classify these already-public business details as
+  # secrets. SMTP_USER is the public contact mailbox, not its password.
+  # Keep scanning enabled for all other keys, especially SMTP_PASSWORD.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_BUSINESS_NAME,NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_BUSINESS_ADDRESS,SMTP_USER,NEXT_PUBLIC_BUSINESS_STATE,NEXT_PUBLIC_BUSINESS_COUNTRY,NEXT_PUBLIC_LINKEDIN_URL"
 
 [functions]
   directory = "netlify/functions"

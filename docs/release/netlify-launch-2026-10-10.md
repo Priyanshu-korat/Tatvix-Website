@@ -5,7 +5,8 @@ Target: existing Netlify project `tatvix` (`790f1bc0-f4af-4135-9f54-8881db5641c5
 ## Hosting implementation
 
 - `npm run build:netlify` builds the same React pages and Three.js/GSAP experience using Next.js 16.3.4. Netlify's current OpenNext adapter provides server-rendered pages and Next route handling. The existing Sites/Vinext build remains available through `npm run build`.
-- `netlify.toml` sets Node 24, `.next` as the publish directory, functions bundling and the known legacy article redirects. There is no SPA fallback and no secret scanning override.
+- `netlify.toml` sets Node 24, `.next` as the publish directory, functions bundling and the known legacy article redirects. There is no SPA fallback. Secret scanning remains enabled, with a narrow exception for seven existing variables containing public company details (including the public SMTP username/contact mailbox); SMTP_PASSWORD remains scanned.
+- Existing Google Search Console and Bing verification values are preserved as ownership metadata when configured in the hosting environment.
 - The custom `/api/contact` Netlify function uses the existing server-side SMTP variables (`SMTP_HOST`, `SMTP_USER`, `SMTP_PASSWORD`, optional `SMTP_PORT`). Mail is explicitly addressed to `info@tatvixtech.com`. These values remain in Netlify's Functions environment, never in the repository or browser bundle.
 - Both hosting targets share validation, consent, honeypot and throttling. Netlify sends directly through SMTP; Sites forwards validated fields including consent to the stable Netlify origin. Direct delivery does not forward over HTTP and therefore cannot create a self-forwarding loop.
 - `.netlify/` is ignored; local linking metadata must never be committed.
@@ -13,6 +14,7 @@ Target: existing Netlify project `tatvix` (`790f1bc0-f4af-4135-9f54-8881db5641c5
 ## Validation and release record
 
 - Local native Next.js production build passed.
+- First hosted attempt `6aca1844ad3673323a9cad3a` compiled and bundled successfully, then failed because the existing project classified public business details as secrets. It did not replace the live website. The corrective configuration only excludes the seven confirmed public keys reported by that scan.
 - 17 automated checks passed, including SMTP address/content sanitisation and the direct-mode delivery path with a stub transport. These tests send no email.
 - After deployment, run `node scripts/audit-seo.mjs https://www.tatvixtech.com docs/qa/netlify-production-seo-audit.json`, check the rendered desktop/mobile experience, the contact route's no-mail validation, TLS and legacy redirects. Record the native deploy result and any limitations in the task response.
 - The previously received test confirmed the old backend's actual SMTP credentials work. A stub transport test is not a new production inbox-receipt check. Do not send another test email without specific authorisation.
