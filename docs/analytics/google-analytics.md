@@ -24,4 +24,4 @@ No new real enquiry is required to test tracking. Use a local mocked success res
 
 ## Validation
 
-Automated tests check no tracking without consent/on preview hosts, tag deduplication, URL cleanup, event parameters, withdrawal and cookie cleanup, and malformed/expired stored choices. Production build and scoped lint must pass before release. Live verification checks the consent banner, acceptance, Google collect requests, rejection and cookie settings; confirm receipt separately in Analytics Realtime.
+Automated tests check no tracking without consent/on preview hosts, tag deduplication, URL cleanup, event parameters, withdrawal and cookie cleanup, and malformed/expired stored choices. Production build and scoped lint must pass before release. Live verification checks the consent banner, acceptance, Google Realtime receipt, rejection and cookie settings; confirm receipt separately in Analytics Realtime.

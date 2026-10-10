@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-10T11:05:38.764Z",
+  "checkedAt": "2026-10-10T11:53:58.112Z",
   "environment": "Public production host; unauthenticated HTTP audit.",
   "pages": 29,
-  "internalTargets": 30,
+  "internalTargets": 33,
   "checks": [
     "unique metadata",
     "canonical URLs",
@@ -88,7 +88,7 @@
       "title": "Privacy Policy | Tatvix Technologies",
       "description": "How Tatvix Technologies handles personal information shared through its website and services.",
       "canonical": "https://www.tatvixtech.com/privacy",
-      "initialTextCharacters": 5686
+      "initialTextCharacters": 6971
     },
     {
       "path": "/terms",
