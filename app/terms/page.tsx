@@ -1,6 +1,6 @@
-import type {Metadata} from 'next';
+import {pageMetadata} from '@/lib/seo';
 import SiteFooter from '@/components/site-footer';
-export const metadata:Metadata={title:'Terms of Service | Tatvix Technologies',description:'Terms of Service for Tatvix Technologies.',alternates:{canonical:'https://www.tatvixtech.com/terms'}};
+export const metadata=pageMetadata('Terms of Service','Terms governing the Tatvix Technologies website and separately agreed engineering project scopes.','/terms');
 export default function TermsOfService(){return <><header className="document-header"><a href="/#overview" className="wordmark">Tatvix<span>Technologies</span></a><a className="text-link" href="/#contact">Let's talk</a></header><main id="main" className="legal-page"><a className="text-link" href="/">Back to home</a><h1>Terms of Service</h1><div className="legal-content"><section>
                     <p>
                         Please read these Terms of Service (&quot;Terms&quot;, &quot;Terms of Service&quot;) carefully before using the website and services operated by Tatvix (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;).

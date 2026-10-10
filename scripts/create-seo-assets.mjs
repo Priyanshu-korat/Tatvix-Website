@@ -1,0 +1,8 @@
+import sharp from 'sharp';
+import {mkdir} from 'node:fs/promises';
+await mkdir('public/images',{recursive:true});
+const social=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"><defs><radialGradient id="g"><stop stop-color="#204253"/><stop offset="1" stop-color="#080d13"/></radialGradient></defs><rect width="1200" height="630" fill="url(#g)"/><g fill="none" stroke="#98dbe8" opacity=".18"><path d="M820 0v160h140v160h240M900 630V450h160V210h140M1040 0v110h160"/><circle cx="960" cy="320" r="10"/><circle cx="900" cy="450" r="10"/></g><text x="80" y="115" fill="#98dbe8" font-family="Arial,sans-serif" font-size="32">Tatvix Technologies</text><text x="80" y="275" fill="#fff" font-family="Arial,sans-serif" font-weight="bold" font-size="74">Ideas become</text><text x="80" y="365" fill="#fff" font-family="Arial,sans-serif" font-weight="bold" font-size="74">extraordinary things.</text><text x="80" y="495" fill="#cbdbe3" font-family="Arial,sans-serif" font-size="28">Hardware · Firmware · IoT · Applications</text><text x="80" y="552" fill="#98dbe8" font-family="Arial,sans-serif" font-size="24">www.tatvixtech.com</text></svg>`;
+const logo=`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="180"><rect width="600" height="180" fill="#080d13"/><text x="35" y="112" font-family="Arial,sans-serif" font-weight="bold" font-size="105" fill="#f1f4f5">Tatvix</text><text x="40" y="157" font-family="Arial,sans-serif" font-size="25" letter-spacing="6" fill="#98dbe8">Technologies</text></svg>`;
+await sharp(Buffer.from(social)).png().toFile('public/images/tatvix-social.png');
+await sharp(Buffer.from(logo)).png().toFile('public/images/tatvix-logo.png');
+console.log('Created original social preview and company wordmark assets.');

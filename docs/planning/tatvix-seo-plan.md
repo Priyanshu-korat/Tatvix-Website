@@ -1,6 +1,6 @@
 # Tatvix website SEO and AI search requirements
 
-Prepared 3 October 2026. Planning only: no website, crawler configuration, or audit has been implemented yet.
+Updated 10 October 2026. SEO implementation and local built-Worker audit completed; the new site remains an owner-private preview. The public www domain still serves the existing website. See `../qa/seo-audit.json` for the executable crawl audit and `../seo/launch-and-search-verification.md` for remaining launch gates and verification instructions.
 
 ## Build requirements
 - Deliver static or server-rendered semantic HTML with meaningful visible text, headings, navigation, and real anchor links. Core company information, services, answers, and contact details must work without JavaScript, animation, or 3D.

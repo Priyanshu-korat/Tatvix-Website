@@ -1,6 +1,6 @@
-import type {Metadata} from 'next';
+import {pageMetadata} from '@/lib/seo';
 import SiteFooter from '@/components/site-footer';
-export const metadata:Metadata={title:'Privacy Policy | Tatvix Technologies',description:'Privacy Policy for Tatvix Technologies.',alternates:{canonical:'https://www.tatvixtech.com/privacy'}};
+export const metadata=pageMetadata('Privacy Policy','How Tatvix Technologies handles personal information shared through its website and services.','/privacy');
 export default function PrivacyPolicy(){return <><header className="document-header"><a href="/#overview" className="wordmark">Tatvix<span>Technologies</span></a><a className="text-link" href="/#contact">Let's talk</a></header><main id="main" className="legal-page"><a className="text-link" href="/">Back to home</a><h1>Privacy Policy</h1><div className="legal-content"><section>
                     <p>
                         Tatvix (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy outlines our practices regarding the collection, use, processing, and disclosure of your information when you access or use our website, applications, and services (collectively, the &quot;Services&quot;). By accessing or using our Services, you consent to the data practices described in this policy.

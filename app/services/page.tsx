@@ -1,0 +1,5 @@
+import {services} from '@/content/services';
+import {pageMetadata} from '@/lib/seo';
+import ContentShell,{ProjectInvitation} from '@/components/content-shell';
+export const metadata=pageMetadata('Embedded Systems & Product Engineering Services','Explore Tatvix’s hardware design, embedded firmware, IoT connectivity, testing and application development services.','/services');
+export default function Services(){return <ContentShell><p className="kicker">Engineering services</p><h1>Every discipline.<br/>One connected product.</h1><p className="knowledge-lead">Tatvix brings hardware, embedded software and applications into one engineering conversation. Explore a focused service or discuss a complete new product.</p><div className="knowledge-cards">{services.map((s,i)=><a href={'/services/'+s.slug} key={s.slug}><span className="card-number">0{i+1}</span><h2>{s.name}</h2><p>{s.summary}</p><span className="text-link">Explore the service ↗</span></a>)}</div><ProjectInvitation/></ContentShell>}

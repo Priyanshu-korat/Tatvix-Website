@@ -1,0 +1,5 @@
+import {industries} from '@/content/industries';
+import {pageMetadata} from '@/lib/seo';
+import ContentShell,{ProjectInvitation} from '@/components/content-shell';
+export const metadata=pageMetadata('IoT & Embedded Engineering by Industry','Explore engineering considerations for industrial IoT, agriculture, medical devices, security, consumer electronics, automotive and energy systems.','/industries');
+export default function Industries(){return <ContentShell><p className="kicker">Applications & industries</p><h1>Built around<br/>the real world.</h1><p className="knowledge-lead">The environment shapes the product. Explore the requirements that matter in each application, then discuss a defined engineering scope with Tatvix.</p><div className="knowledge-cards">{industries.map(i=><a href={'/industries/'+i.slug} key={i.slug}><h2>{i.name}</h2><p>{i.summary}</p><span className="text-link">Explore the application ↗</span></a>)}</div><p className="document-note">These pages describe engineering considerations and potential project scopes. They do not claim delivered projects, regulatory approval or sector certifications.</p><ProjectInvitation/></ContentShell>}

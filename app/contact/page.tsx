@@ -1,8 +1,8 @@
-import type {Metadata} from 'next';
+import {pageMetadata} from '@/lib/seo';
 import EnquiryForm from '@/components/enquiry-form';
 import SiteFooter from '@/components/site-footer';
 
-export const metadata:Metadata={title:'Discuss your project | Tatvix Technologies',description:'Connect with Tatvix Technologies to discuss hardware, firmware, IoT and application engineering requirements.',alternates:{canonical:'https://www.tatvixtech.com/contact'}};
+export const metadata=pageMetadata('Discuss your project','Connect with Tatvix Technologies to discuss hardware, firmware, IoT and application engineering requirements.','/contact');
 
 export default function ContactPage(){return <>
  <a className="skip" href="#main">Skip to content</a>

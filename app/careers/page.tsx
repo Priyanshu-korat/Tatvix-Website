@@ -1,0 +1,4 @@
+import ContentShell from '@/components/content-shell';
+import {pageMetadata,site} from '@/lib/seo';
+export const metadata=pageMetadata('Careers at Tatvix','Follow Tatvix Technologies for future engineering opportunities in embedded systems, IoT and product development.','/careers');
+export default function Careers(){return <ContentShell><p className="kicker">Careers</p><h1>Engineering.<br/>With curiosity.</h1><p className="knowledge-lead">Interested in embedded systems, connected devices and product development? Follow Tatvix Technologies for future updates.</p><section className="knowledge-section"><h2>Current openings</h2><p>We are not currently hiring. This reflects the openings listed on our existing company website.</p><a className="text-link" href={site.linkedIn} target="_blank" rel="noopener noreferrer">Follow Tatvix on LinkedIn ↗</a></section></ContentShell>}
