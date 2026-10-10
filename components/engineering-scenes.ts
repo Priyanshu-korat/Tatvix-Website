@@ -9,6 +9,7 @@ export function buildEngineeringScenes(T:typeof Three,RoundedBoxGeometry:typeof 
  function box(g:Three.Group,w:number,h:number,d:number,x:number,y:number,z:number,m:Three.Material,r=.025){const mesh=new T.Mesh(new RoundedBoxGeometry(w,h,d,2,Math.min(r,w/4,h/4,d/4)),m);mesh.position.set(x,y,z);g.add(mesh);return mesh;}
  function cylinder(g:Three.Group,r:number,h:number,x:number,y:number,z:number,m:Three.Material){const mesh=new T.Mesh(new T.CylinderGeometry(r,r,h,20),m);mesh.position.set(x,y,z);g.add(mesh);return mesh;}
  function path(g:Three.Group,points:number[][],m:Three.Material,r=.014){const curve=new T.CatmullRomCurve3(points.map(v=>new T.Vector3(...v)));const mesh=new T.Mesh(new T.TubeGeometry(curve,24,r,5,false),m);g.add(mesh);return curve;}
+ function straightPath(g:Three.Group,points:number[][],m:Three.Material,r=.012){const route=new T.CurvePath<Three.Vector3>();for(let i=0;i<points.length-1;i++)route.add(new T.LineCurve3(new T.Vector3(...points[i]),new T.Vector3(...points[i+1])));g.add(new T.Mesh(new T.TubeGeometry(route,24,r,5,false),m));return route;}
  function label(g:Three.Group,text:string,x:number,y:number,z:number,width=1){const c=document.createElement('canvas');c.width=512;c.height=96;const ctx=c.getContext('2d')!;ctx.fillStyle='#081721ed';ctx.fillRect(0,0,512,96);ctx.strokeStyle='#4d7489';ctx.lineWidth=2;ctx.strokeRect(1,1,510,94);ctx.fillStyle='#d8f4f8';ctx.font='32px sans-serif';ctx.textAlign='center';ctx.fillText(text,256,59);const texture=new T.CanvasTexture(c);texture.colorSpace=T.SRGBColorSpace;textures.push(texture);const mat=new T.SpriteMaterial({map:texture,transparent:true,depthWrite:false});materials.push(mat);const s=new T.Sprite(mat);s.position.set(x,y,z);s.scale.set(width,width*96/512,1);g.add(s);return s;}
  function surface(g:Three.Group,w:number,d:number,y:number,p:Palette){const c=document.createElement('canvas');c.width=1200;c.height=900;const ctx=c.getContext('2d')!;ctx.fillStyle='#06372f';ctx.fillRect(0,0,1200,900);
  // Routed tracks use right-angle/45-degree bends and fan out around the central package.
@@ -37,9 +38,19 @@ export function buildEngineeringScenes(T:typeof Three,RoundedBoxGeometry:typeof 
  const cores:Three.Mesh[]=[];for(let x=0;x<2;x++)for(let z=0;z<2;z++){const cx=(x-.5)*.78,cz=(z-.5)*.78;cores.push(box(firmware,.65,.075,.65,cx,.15,cz,fp.violet));for(let i=0;i<11;i++)box(firmware,.008,.003,.56,cx-.27+i*.054,.191,cz,fp.light,.001);}
  for(let i=0;i<4;i++){const z=-.87+i*.58;box(firmware,.24,.12,.39,1.05,.075,z,fp.black);box(firmware,.24,.12,.39,-1.05,.075,z,fp.black);for(let k=0;k<5;k++){box(firmware,.16,.004,.006,1.05,.14,z-.15+k*.07,fp.gold,.001);box(firmware,.16,.004,.006,-1.05,.14,z-.15+k*.07,fp.gold,.001);}}
  const contactGeo=new T.SphereGeometry(.032,6,6),contacts=new T.InstancedMesh(contactGeo,fp.gold,225),dummy=new T.Object3D();for(let i=0;i<225;i++){dummy.position.set(-1.15+(i%15)*.165,-.23,-1.15+Math.floor(i/15)*.165);dummy.updateMatrix();contacts.setMatrixAt(i,dummy.matrix);}firmware.add(contacts);
- const firmwareRoutes:Three.CatmullRomCurve3[]=[],firmwarePackets:Three.Mesh[]=[];
- for(let i=0;i<16;i++){const a=i/16*Math.PI*2,x=Math.cos(a),z=Math.sin(a);const curve=path(firmware,[[x*1.25,-.1,z*1.25],[x*1.9,-.1,z*1.9],[x*2.25,.15,z*2.25],[x*2.8,.15,z*2.8]],fp.light,.009);firmwareRoutes.push(curve);const packet=new T.Mesh(new T.SphereGeometry(.035,8,6),fp.light);firmware.add(packet);firmwarePackets.push(packet);}
- label(firmware,'Compute fabric',0,.52,-.85,1.15);label(firmware,'Memory',1.45,.42,.4,.7);
+ // A contained interposer: signals travel through the package, never loose external wires.
+ box(firmware,3.48,.09,3.1,0,-.29,0,fp.black);
+ for(const x of [-1.57,1.57])for(const z of [-1.39,1.39]){cylinder(firmware,.058,.015,x,-.235,z,fp.metal);cylinder(firmware,.025,.018,x,-.224,z,fp.black);}
+ const firmwareRoutes:Three.CurvePath<Three.Vector3>[]=[],firmwarePackets:Three.Mesh[]=[];
+ for(const side of [-1,1])for(let i=0;i<6;i++){
+  const z=-.9+i*.36,endZ=i<3?-1.4:1.4,lane=1.36+(i%3)*.10;
+  const points=[[side*1.25,-.21,z],[side*lane,-.21,z],[side*lane,-.21,endZ],[side*(.65+(i%3)*.20),-.21,endZ]];
+  const route=new T.CurvePath<Three.Vector3>();for(let j=0;j<points.length-1;j++)route.add(new T.LineCurve3(new T.Vector3(...points[j]),new T.Vector3(...points[j+1])));
+  firmwareRoutes.push(route);const tube=new T.Mesh(new T.TubeGeometry(route,24,.006,4,false),fp.light);firmware.add(tube);
+  const packet=new T.Mesh(new T.SphereGeometry(.019,6,6),fp.light);firmware.add(packet);firmwarePackets.push(packet);
+  box(firmware,.11,.035,.09,side*(.65+(i%3)*.20),-.19,endZ,fp.gold,.005);
+ }
+ label(firmware,'Compute fabric',0,.40,-1.1,1.05);
  // BLE-style peer mesh: relays connect to one another; a gateway provides the separate cloud uplink.
  const network=groups[3],np=palette(),meshNodes:Three.Group[]=[],meshPoints=[[-2.6,0,-.85],[-1.1,0,-1.3],[.6,0,-1.15],[2.4,0,-.7],[-2.1,0,1.05],[-.45,0,.85],[1.6,0,1.05]];
  meshPoints.forEach(([x,y,z],i)=>{const node=new T.Group();network.add(node);meshNodes.push(node);node.position.set(x,y,z);cylinder(node,.38,.08,0,-.08,0,np.black);const ring=new T.Mesh(new T.TorusGeometry(.32,.018,6,32),np.light);ring.rotation.x=Math.PI/2;ring.position.y=-.029;node.add(ring);
@@ -52,6 +63,23 @@ export function buildEngineeringScenes(T:typeof Three,RoundedBoxGeometry:typeof 
  edges.forEach(([a,b],i)=>{const v=new T.Vector3(...meshPoints[a]),w=new T.Vector3(...meshPoints[b]);v.y=w.y=.1;const mid=v.clone().lerp(w,.5);mid.y=.26;const curve=path(network,[v.toArray(),mid.toArray(),w.toArray()],np.light,.012);meshRoutes.push(curve);const packet=new T.Mesh(new T.SphereGeometry(.045,8,6),i%3===0?np.gold:np.light);network.add(packet);meshPackets.push(packet);});
  const cloud=new T.Group();network.add(cloud);cloud.position.set(3.1,.6,-1.4);for(let i=0;i<3;i++){box(cloud,1,.20,.48,0,i*.24,0,np.black);box(cloud,.91,.13,.022,0,i*.24,.255,np.metal);for(let j=0;j<3;j++)box(cloud,.035,.025,.025,-.31+j*.08,i*.24,.272,np.light,.001);}label(cloud,'Cloud services',0,.82,0,1.45);
  const uplink=path(network,[[2.4,.55,-.7],[3.1,.5,-1],[3.1,.6,-1.4]],np.gold,.016);meshRoutes.push(uplink);const upPacket=new T.Mesh(new T.SphereGeometry(.06,8,6),np.gold);network.add(upPacket);meshPackets.push(upPacket);
+ // Companion application completes the sensor-to-screen story. Values are sample data.
+ const phone=new T.Group();network.add(phone);phone.position.set(-3.25,.75,-1.05);phone.rotation.set(-.10,.16,-.08);
+ box(phone,1.04,2.02,.12,0,0,0,np.metal,.10);box(phone,.98,1.96,.04,0,0,.071,np.black,.09);
+ const appCanvas=document.createElement('canvas');appCanvas.width=480;appCanvas.height=920;const app=appCanvas.getContext('2d')!;
+ app.fillStyle='#07131d';app.fillRect(0,0,480,920);app.fillStyle='#e5f5f7';app.font='bold 30px sans-serif';app.fillText('Tatvix',32,65);app.font='20px sans-serif';app.fillStyle='#8de0dc';app.fillText('Connected home',32,114);
+ app.fillStyle='#152d3a';app.fillRect(25,154,430,162);app.fillStyle='#d8eaed';app.font='22px sans-serif';app.fillText('Room temperature',48,197);app.font='bold 62px sans-serif';app.fillText('24.8°',48,270);app.fillStyle='#8de0dc';app.font='20px sans-serif';app.fillText('Online',327,268);
+ app.fillStyle='#dceaf0';app.font='24px sans-serif';app.fillText('Your devices',32,370);
+ for(let i=0;i<3;i++){const y=410+i*110;app.fillStyle='#142735';app.fillRect(25,y,430,88);app.fillStyle='#dceaf0';app.font='22px sans-serif';app.fillText(['Lighting','Climate sensor','Gateway'][i],48,y+37);app.fillStyle='#90dcd5';app.font='18px sans-serif';app.fillText(['On · BLE mesh','Online · Wi-Fi','Cloud connected'][i],48,y+65);}
+ app.fillStyle='#8faab7';app.font='17px sans-serif';app.fillText('Illustrative app · Sample data',32,847);
+ const appTexture=new T.CanvasTexture(appCanvas);appTexture.colorSpace=T.SRGBColorSpace;textures.push(appTexture);const appMat=new T.MeshBasicMaterial({map:appTexture,transparent:true});materials.push(appMat);const appScreen=new T.Mesh(new T.PlaneGeometry(.91,1.78),appMat);appScreen.position.set(0,-.015,.098);phone.add(appScreen);box(phone,.28,.035,.018,0,.89,.105,np.black,.01);
+ // Recognisable Wi-Fi and Bluetooth pictograms, rendered as restrained luminous signage.
+ const protocols=new T.Group();network.add(protocols);protocols.position.set(-.3,.92,-.85);
+ const wifi=new T.Group();protocols.add(wifi);wifi.position.x=-.72;
+ for(let i=0;i<3;i++){const r=.13+i*.105,pts=[];for(let j=0;j<=20;j++){const a=Math.PI*.20+j/20*Math.PI*.60;pts.push([Math.cos(a)*r,Math.sin(a)*r,0]);}path(wifi,pts,np.light,.012);}
+ const dot=new T.Mesh(new T.SphereGeometry(.025,8,6),np.light);dot.position.y=.015;wifi.add(dot);label(wifi,'Wi-Fi',0,-.16,0,.65);
+ const ble=new T.Group();protocols.add(ble);ble.position.x=.42;
+ straightPath(ble,[[0,-.25,0],[0,.39,0],[.19,.23,0],[-.16,-.08,0]],np.light,.013);straightPath(ble,[[-.16,.23,0],[.19,-.08,0],[0,-.25,0]],np.light,.013);label(ble,'BLE mesh',.02,-.45,0,.85);
  // Four tangible engineering stations: specification, PCB, assembled controller and test fixture.
  const process=groups[5],pp=palette(),stations:Three.Group[]=[];
  for(let i=0;i<4;i++){const station=new T.Group();process.add(station);stations.push(station);station.position.x=(i-1.5)*1.95;box(station,1.65,.15,1.35,0,-.23,0,pp.black);box(station,1.5,.018,1.2,0,-.143,0,pp.metal);box(station,1.38,.018,.018,0,-.12,.58,pp.light,.002);}
