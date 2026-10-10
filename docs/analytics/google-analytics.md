@@ -18,7 +18,7 @@ Enhanced measurement was turned off in the Analytics stream to avoid automatic f
 
 ## Owner reporting
 
-Open https://analytics.google.com/analytics/web/#/a411413656p558360798/reports/intelligenthome. Realtime shows current consented visitors. Traffic acquisition shows referring sources; Pages and screens shows service, industry and case-study interest. Mark generate_lead as a key event in Admin > Events if it is not already marked. Standard reports can lag behind Realtime. Rejected, blocked and preview visits are intentionally absent.
+Open https://analytics.google.com/analytics/web/#/a411413656p558360798/reports/intelligenthome. Realtime shows current consented visitors. Traffic acquisition shows referring sources; Pages and screens shows service, industry and case-study interest. generate_lead is registered and marked as a key event, counting once per event, with no default monetary value. Standard reports can lag behind Realtime. Rejected, blocked and preview visits are intentionally absent.
 
 No new real enquiry is required to test tracking. Use a local mocked success response when validating the form event; production enquiry sending needs separate approval.
 
